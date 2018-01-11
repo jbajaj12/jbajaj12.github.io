@@ -20,17 +20,6 @@
 </head>
 <body>
 
-<div class="container">
-
- 
-<!-----------------------------------BCM Machines ---------------------------------------->
-<div class="setup" id="setup">
-  <button type="button" onclick="UserAction()">BCM Machines<span></span></button>
-    <p id="machinelist"></p>
-  </div>
-</div>
-
-    
 <?php
 // Point to where you downloaded the phar
 include('C:\Users\build\Documents\GitHub\jbajaj12.github.io\httpful.phar');
@@ -42,7 +31,20 @@ $response = \Httpful\Request::get($uri)
     ->send();
  
 echo "$response";
-?>
+echo "Hello";
+?>    
+    
+<div class="container">
+
+ 
+<!-----------------------------------BCM Machines ---------------------------------------->
+<div class="setup" id="setup">
+  <button type="button" onclick="UserAction()">BCM Machines<span></span></button>
+    <p id="machinelist"></p>
+  </div>
+</div>
+
+    
 <!--
     
 <script>
