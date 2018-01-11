@@ -8,16 +8,6 @@ body {
 }
 
 /*-----------------------------------Get Started ----------------------------------------*/
-.setup{
-    /*background-image: linear-gradient(-90deg, #FFFFFF, #42B1C2);*/
-    padding-top: 50px;
-	padding-left: 20px;
-	padding-right: 50px;
-	padding-bottom: 150px;
-	text-align: center;
-	height: 875px;
-}
-
 .container {
 	text-align: center;
 }
