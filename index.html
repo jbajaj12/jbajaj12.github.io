@@ -24,10 +24,12 @@
 <!-----------------------------------BCM Machines ---------------------------------------->
 
 <h1 style="color: white;">Cambira Live Broadcast Manager Portal</h1>
+
     
+
 <div >
   <button type="button" onclick="UserAction()">BCM Machines<span></span></button>
-    <p id="machinelist"></p>
+   <p style="color: white;" id="demo"></p>
   </div>
     
 <div >
@@ -48,11 +50,26 @@ function UserAction() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("machinelist").innerHTML = this.responseText;
+        myFunction(this);
+      //document.getElementById("machinelist").innerHTML = this.responseText;
     }
   };
-    xhttp.open("GET", "https://localhost:8753/CambriaBM/v1/Machines", true);
+    xhttp.open("GET", "http://localhost:8753/CambriaBM/v1/Machines", true);
     xhttp.send();
+}
+function myFunction(xml) {
+  var i, txt;
+  var xmlDoc = xml.responseXML;
+    txt = "";
+  var table="<tr><th>Machines</th></tr>";
+  var x = xmlDoc.getElementsByTagName("Machine");
+  for (i = 0; i <x.length; i++) { 
+//    table += "<tr><td>" +
+//    x[i].getAttribute('Identifier')[i]
+//    "</td></tr>";
+      txt += x[i].getAttribute('Identifier')  + "<br>";
+  }
+  document.getElementById("demo").innerHTML = txt;
 }
 </script>
     
