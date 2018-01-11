@@ -8,7 +8,6 @@
   <meta name="description" content="BCM">
   <meta name="author" content="JB">
   <link rel="stylesheet" type="text/css" href="style.css" />
-  <script src="script.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Nunito|Play|Raleway|Titillium+Web');
 </style>
@@ -18,6 +17,25 @@
     font-family: 'Nunito', sans-serif;
     }
 </style>
+    
+    
+<?php
+// Point to where you downloaded the phar
+include('./httpful.phar');
+ 
+// And you're ready to go!
+$response = \Httpful\Request::get('http://example.com')->send();
+...
+
+$uri = 'https://example.net/person.xml';
+ 
+$response = \Httpful\Request::get($uri)
+    ->expectsXml()
+    ->send();
+ 
+echo "Name: $response->body->name";
+?>
+    
 </head>
 <body>
 
@@ -31,6 +49,7 @@
   </div>
 </div>
 
+<!--
     
 <script>
 function UserAction() {
@@ -45,6 +64,7 @@ function UserAction() {
 }
 </script>
     
+-->
 </body>
 </html>
 
