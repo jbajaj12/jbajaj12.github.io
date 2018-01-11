@@ -17,25 +17,6 @@
     font-family: 'Nunito', sans-serif;
     }
 </style>
-    
-    
-<?php
-// Point to where you downloaded the phar
-include('./httpful.phar');
- 
-// And you're ready to go!
-$response = \Httpful\Request::get('http://example.com')->send();
-...
-
-$uri = 'https://example.net/person.xml';
- 
-$response = \Httpful\Request::get($uri)
-    ->expectsXml()
-    ->send();
- 
-echo "Name: $response->body->name";
-?>
-    
 </head>
 <body>
 
@@ -49,6 +30,19 @@ echo "Name: $response->body->name";
   </div>
 </div>
 
+    
+<?php
+// Point to where you downloaded the phar
+include('C:\Users\build\Documents\GitHub\jbajaj12.github.io\httpful.phar');
+ 
+$uri = 'http://localhost:8753/CambriaBM/v1/Machines';
+ 
+$response = \Httpful\Request::get($uri)
+    ->expectsXml()
+    ->send();
+ 
+echo "$response";
+?>
 <!--
     
 <script>
