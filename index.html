@@ -11,7 +11,18 @@
 <style>
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Nunito|Play|Raleway|Titillium+Web');
 </style>
+<style>
+table {
+    border-collapse: collapse;
+}
 
+th, td {
+    text-align: left;
+    padding: 6px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2; color: black }
+</style>
 <style>
     * {
     font-family: 'Nunito', sans-serif;
@@ -29,9 +40,25 @@
 
 <div >
   <button type="button" onclick="UserAction()">BCM Machines<span></span></button>
-   <p style="color: white;" id="demo"></p>
-  </div>
+    <table width= "25%" bordercolor="white" style="color: white; text-align: center; display: none;" id="demo"></table>
+    <br>
+</div>
+
+
+<div >
+  <button type="button" onclick="UserAction()">BCM Events<span></span></button>
+    <table bordercolor="white" style="color: white; text-align: center; display: none;" id="demo"></table>
+    <br>
+</div>
     
+
+<div >
+  <button type="button" onclick="UserAction()">BCM Stats<span></span></button>
+    <table bordercolor="white" style="color: white; text-align: center; display: none;" id="demo"></table>
+    <br>
+</div>
+    
+<!--
 <div >
   <button type="button" onclick="UserAction()">BCM Events<span></span></button>
     <p id="machinelist"></p>
@@ -45,18 +72,32 @@
     
 </div>
     
+-->
 <script>
+    
 function UserAction() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         myFunction(this);
+        hide();
       //document.getElementById("machinelist").innerHTML = this.responseText;
     }
   };
     xhttp.open("GET", "http://localhost:8753/CambriaBM/v1/Machines", true);
     xhttp.send();
+    
 }
+    
+function hide() {
+   var status = document.getElementById("demo").style.display;
+    if (status == 'block') {
+      document.getElementById("demo").style.display="none";
+    } else {
+      document.getElementById("demo").style.display="block";
+    }
+}
+    
 function myFunction(xml) {
   var i, txt;
   var xmlDoc = xml.responseXML;
@@ -67,9 +108,10 @@ function myFunction(xml) {
 //    table += "<tr><td>" +
 //    x[i].getAttribute('Identifier')[i]
 //    "</td></tr>";
-      txt += x[i].getAttribute('Identifier')  + "<br>";
+      txt = x[i].getAttribute('Identifier');
+      table += "<tr><td>" + txt + "</td></tr>"
   }
-  document.getElementById("demo").innerHTML = txt;
+  document.getElementById("demo").innerHTML = table;
 }
 </script>
     
